@@ -21,11 +21,25 @@ $(document).ready(function(){
     function writeData(){
         database.ref().on('child_added', function(snapshot){
             
+            var trainStart = snapshot.val().startTime;
+            var trainFrequency = Number(snapshot.val().frequency);
+            var trainStartConvert = moment(trainStart, 'HH:mm').subtract(1, 'years');
+            var timeDifference = moment().diff(moment(trainStartConvert), 'minutes');
+            var remainder = timeDifference % trainFrequency;
+            var minutesUntil = trainFrequency - remainder;
+            var nextTrain = moment().add(minutesUntil, 'minutes')
             var displayTable = $('<tr>').append(
                 $('<td>').text(snapshot.val().trainName),
                 $('<td>').text(snapshot.val().destination),
-                $('<td>').text(snapshot.val().frequency + ' min')
+                $('<td>').text(snapshot.val().frequency + ' min'),
+                $('<td>').text(moment(nextTrain).format('hh:mm a')),
+                $('<td>').text(minutesUntil),
             )
+
+            var tableButton = $('<td>');
+            var removeButton = $('<button>').text('Remove').addClass('btn btn-danger').attr({value:snapshot.key, id:'remove'});
+            tableButton.append(removeButton);
+            displayTable.append(tableButton);
 
             $('#current-trains').append(displayTable);
         })
@@ -33,8 +47,15 @@ $(document).ready(function(){
 
     $('#schedule-submit').click(function(){
 
-        event.preventDefault();
         storeData();
+    })
+
+    $(document).on('click', '#remove', function(){
+    
+        var childId = this.value;
+        database.ref().child(childId).remove();
+        location.reload();
+
     })
     writeData();
 
