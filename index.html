@@ -53,6 +53,72 @@
 
   <body>
 
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron">
+              <h1 class="display-4">Train Scheduler</h1>
+              <p class="lead">This is a simple train Scheduler. Enter the information below to get your train added!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                  Current Schedules
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                          </tr>
+                        </thead>
+                        <tbody id="current-trains">
+                          
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                  Add a Train
+                </div>
+                <div class="card-body">
+                    <form>
+                    <div class="form-group">
+                      <label for="train-input">Train Name</label>
+                      <input type="text" class="form-control" id="train-input" aria-describedby="trainName" placeholder="Enter the Train's Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="destination-input">Destination</label>
+                      <input type="text" class="form-control" id="destination-input" placeholder="Train's Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="time-input">First Train Time</label>
+                        <input type="time" class="form-control" id="time-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency-input">Frequency in Minutes</label>
+                        <input type="number" class="form-control" id="frequncy-input">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="schedule-submit">Submit</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+
   </body>
   
 </html>
