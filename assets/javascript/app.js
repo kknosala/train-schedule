@@ -18,12 +18,25 @@ $(document).ready(function(){
 
     }
 
+    function writeData(){
+        database.ref().on('child_added', function(snapshot){
+            
+            var displayTable = $('<tr>').append(
+                $('<td>').text(snapshot.val().trainName),
+                $('<td>').text(snapshot.val().destination),
+                $('<td>').text(snapshot.val().frequency + ' min')
+            )
+
+            $('#current-trains').append(displayTable);
+        })
+    }
+
     $('#schedule-submit').click(function(){
 
         event.preventDefault();
         storeData();
     })
-
+    writeData();
 
 
 })
