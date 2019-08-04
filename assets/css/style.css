@@ -1,0 +1,47 @@
+body {
+    color: #c5c6c7;
+    /*background image found at https://www.toptal.com/designers/subtlepatterns/dark-honeycomb-pattern/ */
+    background-image: url(../images/dark-honeycomb.png);
+    background-color: #292a2b;
+}
+
+h1 {
+    color: #66fcf1;
+}
+
+input[type='text'], textarea {
+    background-color: #c5c6c7
+}
+
+input[type='number'], textarea {
+    background-color: #c5c6c7
+}
+
+.jumbotron {
+    background-color: #0b0c10;
+}
+
+.card {
+    border: 0px;
+}
+.card-header {
+    background-color: #0b0c10;
+    color: #45a29E;
+}
+
+.card-body {
+    background-color: #1f2833;
+}
+
+.table {
+    color: #c5c6c7;
+}
+
+.btn-primary {
+    background-color: #45a29E;
+    border-color: #45a29E;
+}
+
+.btn-primary:hover {
+    background-color: rgb(43, 131, 126);
+}
